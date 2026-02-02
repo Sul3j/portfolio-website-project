@@ -33,7 +33,7 @@ services:
       - USE_MYSQL=True
       - MYSQL_DATABASE=portfolio_db
       - MYSQL_USER=portfolio_user
-      - MYSQL_PASSWORD=partfolio_pass
+      - MYSQL_PASSWORD=portfolio_pass
       - MYSQL_HOST=db
       - MYSQL_PORT=3306
       - DJANGO_SECRET_KEY=django-secret-key
