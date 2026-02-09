@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     initParticles();
+    initTypingEffect();
 });
 
 function initParticles() {
@@ -82,4 +83,49 @@ function initParticles() {
             retina_detect: true
         });
     }
+}
+
+function initTypingEffect() {
+    const typedTextElement = document.getElementById('typed-text');
+
+    if (!typedTextElement) return;
+
+    const texts = [
+        'Tworzę nowoczesne aplikacje webowe',
+        'Specjalizuję się w Python i Django',
+        'Projektuje responsywne interfejsy',
+        'Buduję skalowalne rozwiązania'
+    ];
+    
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    
+    function type() {
+        const currentText = texts[textIndex];
+
+        if (isDeleting) {
+            typedTextElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50;
+        } else {
+            typedTextElement.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+        }
+
+        if (!isDeleting && charIndex == currentText.length) {
+            isDeleting = true;
+            typingSpeed = 2000;
+        } else if (isDeleting && charIndex == 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            typingSpeed = 500;
+        }
+
+        setTimeout(type, typingSpeed);
+    }
+
+    setTimeout(type, 1000);
 }
