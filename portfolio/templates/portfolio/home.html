@@ -210,7 +210,7 @@
                                 <div class="project-content">
                                     <h3 class="project-title">{{ project.title }}</h3>
                                     <p class="project-description">{{ project.description|truncatewords:20 }}</p>
-                                    {% if projects.technologies.all %}
+                                    {% if project.technologies.all %}
                                     <div class="project-technologies">
                                         {% for tech in project.technologies.all %}
                                         <span class="tech-badge">{{ tech.name }}</span>
